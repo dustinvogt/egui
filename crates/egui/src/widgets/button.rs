@@ -350,16 +350,18 @@ impl<'a> Button<'a> {
             .fallback_text_color(text_style.color);
 
         // Retrocompatibility with button settings
+        use log::info;
         layout = if has_frame_margin && (state != WidgetState::Inactive || frame_when_inactive) {
+            info!("pass 1: {:?}", frame);
             layout.frame(frame)
         } else {
             let mut temp_frame = Frame::new().inner_margin(frame.inner_margin);
             if let Some(stroke) = stroke {
                 temp_frame = temp_frame.stroke(Stroke::new(stroke.width, Color32::TRANSPARENT));
             }
+            info!("pass 1: {:?} {:?}", frame.inner_margin, temp_frame);
             layout.frame(temp_frame)
         };
-
         let mut prepared = layout.min_size(min_size).allocate(ui);
 
         // Get AtomLayoutResponse, empty if not visible
