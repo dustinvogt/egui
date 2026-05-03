@@ -351,6 +351,11 @@ impl<'a> Button<'a> {
 
         // Retrocompatibility with button settings
         use log::info;
+		if text == "FAQ" || text == "Overview" {
+            if let Some(stroke) = stroke {
+                info!("stroke: {:?}", stroke);
+            }
+        }
         layout = if has_frame_margin && (state != WidgetState::Inactive || frame_when_inactive) {
             if text == "FAQ" || text == "Overview" {
                 info!("pass 1: {:?}", frame);
