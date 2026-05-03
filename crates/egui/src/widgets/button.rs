@@ -367,9 +367,7 @@ impl<'a> Button<'a> {
             layout.frame(frame)
         } else {
             let mut temp_frame = Frame::new().inner_margin(frame.inner_margin);
-            if let Some(stroke) = stroke {
-                temp_frame = temp_frame.stroke(Stroke::new(1.0f32, Color32::TRANSPARENT));
-            }
+            temp_frame = temp_frame.stroke(Stroke::new(1.0f32, Color32::TRANSPARENT));
             if let Some(text) = &text {
                 if text.eq(&"FAQ".to_string()) || text.eq(&"Overview".to_string()) {
                     info!("pass 2: {:?} {:?}", frame.inner_margin, temp_frame);
