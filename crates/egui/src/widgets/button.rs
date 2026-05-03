@@ -352,7 +352,7 @@ impl<'a> Button<'a> {
         // Retrocompatibility with button settings
         use log::info;
         if let Some(text) = &text {
-            if text == "FAQ".to_string() || text == "Overview".to_string() {
+            if text.eq("FAQ".to_string()) || text.eq("Overview".to_string()) {
                 if let Some(stroke) = stroke {
                     info!("stroke: {:?}", stroke);
                 }
@@ -360,7 +360,7 @@ impl<'a> Button<'a> {
         }
         layout = if has_frame_margin && (state != WidgetState::Inactive || frame_when_inactive) {
             if let Some(text) = &text {
-                if text == "FAQ".to_string() || text == "Overview".to_string() {
+                if text.eq("FAQ".to_string()) || text.eq("Overview".to_string()) {
                     info!("pass 1: {:?}", frame);
                 }
             }
@@ -371,7 +371,7 @@ impl<'a> Button<'a> {
                 temp_frame = temp_frame.stroke(Stroke::new(stroke.width, Color32::TRANSPARENT));
             }
             if let Some(text) = &text {
-                if text == "FAQ".to_string() || text == "Overview".to_string() {
+                if text.eq("FAQ".to_string()) || text.eq("Overview".to_string()) {
                     info!("pass 2: {:?} {:?}", frame.inner_margin, temp_frame);
                 }
             }
