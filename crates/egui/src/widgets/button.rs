@@ -352,7 +352,6 @@ impl<'a> Button<'a> {
         // Retrocompatibility with button settings
         use log::info;
         layout = if has_frame_margin && (state != WidgetState::Inactive || frame_when_inactive) {
-            info!("pass 1: {:?}", frame);
             layout.frame(frame)
         } else {
             let mut temp_frame = Frame::new().inner_margin(frame.inner_margin);
